@@ -14,7 +14,7 @@ before_install:
     - gcloud config set project nice-champion-274911
     - gcloud config set compute/zone europe-west2-c
     - gcloud container clusters get-credentials multi-cluster 
-    - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker build -t tomsou/react-test -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true tomsou/docker-test npm run test
